@@ -2,7 +2,7 @@
 
 Portfolio personnel : étudiant en cybersécurité à Guardia Cyber School, sécurité offensive & défensive.
 
-🌐 **En ligne :** https://vbenji23.github.io/portfolio/
+🌐 **En ligne :** https://vbenji23.github.io/PORTOFLIO-DE-MOI-/
 
 ## Déploiement (GitHub Pages)
 1. Pousser ce dossier sur le dépôt `vbenji23/portfolio`
