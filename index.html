@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benjamin Vincenti — Portfolio Cybersécurité</title>
+<meta name="description" content="Portfolio de Benjamin Vincenti, étudiant en cybersécurité à Guardia Cyber School — sécurité offensive et défensive, projets et recherche de stage.">
+<style>
+  :root{
+    --bg:#0a0e14; --bg2:#121820; --card:#161d27; --line:#242e3b;
+    --txt:#e6edf3; --muted:#8b98a9; --teal:#2dd4bf; --blue:#3b82f6;
+    --green:#27c93f; --high:#ff5f56; --med:#ffbd2e;
+    --grad:linear-gradient(90deg,#2dd4bf,#3b82f6);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.65}
+  .mono{font-family:'JetBrains Mono','SF Mono','Courier New',monospace}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+  section{padding:70px 0;border-top:1px solid var(--line)}
+  h2{font-size:15px;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+  .sec-title{font-size:30px;font-weight:800;margin-bottom:36px}
+
+  /* Nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(10,14,20,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:980px;margin:0 auto;padding:0 24px}
+  .brand{font-weight:800;font-size:17px}
+  .brand .mono{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-links{display:flex;gap:26px;font-size:14px}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:.15s}
+  .nav-links a:hover{color:var(--txt)}
+  @media(max-width:680px){.nav-links{display:none}}
+
+  /* Hero */
+  .hero{padding:90px 0 80px;border-top:none}
+  .status{display:inline-flex;align-items:center;gap:8px;background:rgba(39,201,63,.1);border:1px solid rgba(39,201,63,.3);color:#7ee787;padding:6px 14px;border-radius:30px;font-size:13px;font-weight:600;margin-bottom:24px}
+  .dot-live{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(39,201,63,.6);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(39,201,63,.5)}70%{box-shadow:0 0 0 8px rgba(39,201,63,0)}100%{box-shadow:0 0 0 0 rgba(39,201,63,0)}}
+  .hero h1{font-size:54px;font-weight:800;line-height:1.1;margin-bottom:14px}
+  .hero h1 .mono{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .role{font-size:22px;color:var(--muted);margin-bottom:28px}
+  .hero .lead{font-size:17px;color:var(--muted);max-width:680px;margin-bottom:32px}
+  .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:12px 22px;border-radius:9px;text-decoration:none;font-weight:600;font-size:15px;transition:.15s;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary{background:var(--grad);color:#02121a}
+  .btn-primary:hover{opacity:.9;transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--txt)}
+  .btn-ghost:hover{background:var(--bg2);border-color:var(--teal)}
+
+  /* Profil */
+  .profil p{font-size:17px;color:#c4cdd8;max-width:760px}
+
+  /* Compétences */
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .skill{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .skill h3{font-size:16px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .skill h3 .i{font-size:20px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:var(--bg2);border:1px solid var(--line);color:#aab7c6;font-size:13px;padding:4px 11px;border-radius:6px;font-family:'JetBrains Mono',monospace}
+
+  /* Projets */
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.projects{grid-template-columns:1fr}}
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;transition:.18s}
+  .proj:hover{border-color:var(--teal);transform:translateY(-4px)}
+  .proj .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+  .proj h3{font-size:19px}
+  .proj .badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+  .b-live{background:rgba(39,201,63,.12);color:#7ee787;border:1px solid rgba(39,201,63,.3)}
+  .b-dev{background:rgba(255,189,46,.12);color:#e6c07b;border:1px solid rgba(255,189,46,.3)}
+  .proj p{color:var(--muted);font-size:14.5px;flex:1;margin-bottom:16px}
+  .proj .links{display:flex;gap:16px;font-size:14px;font-weight:600}
+  .proj .links a{color:var(--teal);text-decoration:none}
+  .proj .links a:hover{text-decoration:underline}
+  .proj .stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+  .proj .stack span{font-size:12px;color:#8b98a9;font-family:'JetBrains Mono',monospace}
+
+  /* Timeline */
+  .tl{position:relative;padding-left:28px}
+  .tl::before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:var(--line)}
+  .tl-item{position:relative;margin-bottom:28px}
+  .tl-item::before{content:"";position:absolute;left:-28px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--teal)}
+  .tl-item h3{font-size:17px}
+  .tl-item .when{font-size:13px;color:var(--teal);font-family:'JetBrains Mono',monospace;margin:2px 0 6px}
+  .tl-item p{color:var(--muted);font-size:14.5px}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  @media(max-width:680px){.two-col{grid-template-columns:1fr;gap:50px}}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .contact-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;text-decoration:none;display:flex;align-items:center;gap:14px;transition:.15s}
+  .contact-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+  .contact-card .ic{font-size:24px}
+  .contact-card .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .contact-card .val{font-size:15px;font-weight:600;color:var(--txt);word-break:break-all}
+
+  footer{padding:40px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="brand"><span class="mono">BV</span> · Benjamin Vincenti</div>
+    <div class="nav-links">
+      <a href="#profil">Profil</a>
+      <a href="#competences">Compétences</a>
+      <a href="#projets">Projets</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="status"><span class="dot-live"></span> Disponible pour un stage · mai – juillet 2026</div>
+    <h1>Benjamin <span class="mono">Vincenti</span></h1>
+    <p class="role">Étudiant en cybersécurité — sécurité offensive &amp; défensive</p>
+    <p class="lead">Formé à Guardia Cyber School aux approches offensives et défensives. Pratique régulière en laboratoire (TryHackMe, Root-Me) : reconnaissance réseau, scan de ports, fingerprinting, administration Linux et analyse de binaires.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#contact">✉️ Me contacter</a>
+      <a class="btn btn-ghost" href="https://github.com/vbenji23" target="_blank" rel="noopener">⭐ GitHub</a>
+      <a class="btn btn-ghost" href="https://tryhackme.com/p/bvincenti" target="_blank" rel="noopener">🎯 TryHackMe</a>
+    </div>
+  </div>
+</header>
+
+<!-- PROFIL -->
+<section id="profil" class="profil">
+  <div class="wrap">
+    <h2>À propos</h2>
+    <div class="sec-title">Profil</div>
+    <p>Étudiant en cybersécurité à Guardia Cyber School, formé aux approches offensives et défensives. Je m'entraîne en continu sur des plateformes de challenges (TryHackMe, Root-Me) et je construis mes propres outils et environnements vulnérables pour approfondir chaque sujet. Je recherche un <strong>stage de deux mois (mai – juillet)</strong> pour intégrer une équipe sécurité et progresser sur des missions concrètes.</p>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="wrap">
+    <h2>Stack technique</h2>
+    <div class="sec-title">Compétences</div>
+    <div class="skills">
+      <div class="skill">
+        <h3><span class="i">🌐</span> Réseau &amp; reconnaissance</h3>
+        <div class="tags">
+          <span class="tag">Nmap</span><span class="tag">Zenmap</span><span class="tag">Scan de ports</span>
+          <span class="tag">Détection OS/services</span><span class="tag">Fingerprinting</span>
+          <span class="tag">Netcat</span><span class="tag">hping3</span><span class="tag">Dmitry</span>
+        </div>
+      </div>
+      <div class="skill">
+        <h3><span class="i">⚔️</span> Sécurité offensive</h3>
+        <div class="tags">
+          <span class="tag">Notions de pentest</span><span class="tag">Metasploit</span>
+          <span class="tag">CTF</span><span class="tag">Challenges web &amp; système</span>
+        </div>
+      </div>
+      <div class="skill">
+        <h3><span class="i">🐧</span> Systèmes Linux</h3>
+        <div class="tags">
+          <span class="tag">Shell Bash</span><span class="tag">SSH</span><span class="tag">Permissions</span>
+          <span class="tag">Fichiers système</span><span class="tag">Journaux /var/log</span>
+        </div>
+      </div>
+      <div class="skill">
+        <h3><span class="i">🔬</span> Rétro-ingénierie</h3>
+        <div class="tags">
+          <span class="tag">Binaires ELF</span><span class="tag">ARM 32 bits</span>
+          <span class="tag">Assembleur</span><span class="tag">Parsing de sections ELF</span>
+        </div>
+      </div>
+      <div class="skill">
+        <h3><span class="i">🐍</span> Scripting</h3>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Scapy</span>
+          <span class="tag">Analyse binaire</span><span class="tag">Bash</span>
+        </div>
+      </div>
+      <div class="skill">
+        <h3><span class="i">🛡️</span> DevSecOps &amp; cryptographie</h3>
+        <div class="tags">
+          <span class="tag">Sécurité du cycle de dev</span><span class="tag">Bases de cryptographie</span>
+          <span class="tag">CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="wrap">
+    <h2>Réalisations</h2>
+    <div class="sec-title">Projets</div>
+    <div class="projects">
+
+      <div class="proj">
+        <div class="top"><h3>🛡️ httpsentinel</h3><span class="badge b-dev">Python</span></div>
+        <div class="stack"><span>Python</span><span>requests</span><span>CLI</span></div>
+        <p>Scanner de sécurité web en ligne de commande : analyse des en-têtes HTTP, inspection TLS/certificat, fingerprinting serveur et détection de fichiers sensibles exposés. Rapports terminal, JSON et HTML ; prêt pour l'intégration en CI.</p>
+        <div class="links"><a href="https://github.com/vbenji23" target="_blank" rel="noopener">Code →</a></div>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>🏷️ Baie 42 — CTF</h3><span class="badge b-live">En ligne</span></div>
+        <div class="stack"><span>HTML</span><span>Flask</span><span>CTF</span></div>
+        <p>Plateforme d'entraînement CTF : boutique fictive de matériel réseau volontairement vulnérable. Couvre web, DevSecOps/CI-CD, back-office, blue team (SOC, EDR), reverse, réseau et DFIR.</p>
+        <div class="links">
+          <a href="https://vbenji23.github.io/baie42-ctf/" target="_blank" rel="noopener">Site →</a>
+          <a href="https://github.com/vbenji23/baie42-ctf" target="_blank" rel="noopener">Code →</a>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>🤖 Agent IA — recherche de vulnérabilités</h3><span class="badge b-dev">En cours</span></div>
+        <div class="stack"><span>Python</span><span>IA</span><span>Audit web</span></div>
+        <p>Agent d'audit automatisé destiné à rechercher des vulnérabilités sur les sites web d'entreprises. Projet exploratoire mêlant sécurité offensive et automatisation par IA.</p>
+        <div class="links"><a href="https://github.com/vbenji23" target="_blank" rel="noopener">Code →</a></div>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>📚 Il était un cours</h3><span class="badge b-dev">En cours</span></div>
+        <div class="stack"><span>Web</span><span>Synthèse vocale</span></div>
+        <p>Outil de révision qui raconte les cours sous forme d'histoires, avec un mode voix (inspiré de Koro AI). Hébergé sur GitHub Pages, sans dépendance à une clé API payante.</p>
+        <div class="links"><a href="https://github.com/vbenji23" target="_blank" rel="noopener">Code →</a></div>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>📖 Guide Nmap &amp; cybersécurité</h3><span class="badge b-dev">Perso</span></div>
+        <div class="stack"><span>Nmap</span><span>Doc</span></div>
+        <p>Guide de synthèse complet : commandes Nmap, détection d'OS, comparatif Netcat / Scapy / hping3 / Dmitry / Metasploit / Zenmap, accompagné de travaux pratiques.</p>
+        <div class="links"><a href="https://github.com/vbenji23" target="_blank" rel="noopener">Code →</a></div>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>🔓 Crackme ARM 32 bits</h3><span class="badge b-dev">Reverse</span></div>
+        <div class="stack"><span>ELF</span><span>ARM</span><span>Python</span></div>
+        <p>Analyse d'une routine de validation de mot de passe en temps constant : parsing des sections ELF et décodage d'instructions ARM en Python.</p>
+        <div class="links"><a href="https://github.com/vbenji23" target="_blank" rel="noopener">Code →</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARCOURS -->
+<section id="parcours">
+  <div class="wrap">
+    <h2>Expérience &amp; formation</h2>
+    <div class="sec-title">Parcours</div>
+    <div class="two-col">
+      <div>
+        <h3 style="margin-bottom:22px;color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:2px">EXPÉRIENCE</h3>
+        <div class="tl">
+          <div class="tl-item">
+            <h3>Stage — CGI</h3>
+            <div class="when">Juin – juillet</div>
+            <p>Stage de deux mois en entreprise de services numériques.</p>
+          </div>
+          <div class="tl-item">
+            <h3>Boutique de réparation</h3>
+            <div class="when">Stages</div>
+            <p>Diagnostic et réparation de matériel, relation client.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin-bottom:22px;color:var(--teal);font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:2px">FORMATION</h3>
+        <div class="tl">
+          <div class="tl-item">
+            <h3>Guardia Cyber School</h3>
+            <div class="when">Depuis 2025</div>
+            <p>Cursus cybersécurité (en français) : DevSecOps, rétro-ingénierie, cryptographie, réseaux, fondamentaux Linux, scan de ports, fingerprinting, sécurité offensive et défensive.</p>
+          </div>
+          <div class="tl-item">
+            <h3>Langues</h3>
+            <div class="when">—</div>
+            <p>Français : langue maternelle · Anglais : A1–A2</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <h2>Restons en contact</h2>
+    <div class="sec-title">Contact</div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:bvincenti@guardiaschool.fr">
+        <span class="ic">✉️</span><span><span class="lbl">Email</span><br><span class="val">bvincenti@guardiaschool.fr</span></span>
+      </a>
+      <a class="contact-card" href="tel:+33610392744">
+        <span class="ic">📱</span><span><span class="lbl">Téléphone</span><br><span class="val">06 10 39 27 44</span></span>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/benjamin-vincenti-835630387" target="_blank" rel="noopener">
+        <span class="ic">💼</span><span><span class="lbl">LinkedIn</span><br><span class="val">benjamin-vincenti</span></span>
+      </a>
+      <a class="contact-card" href="https://github.com/vbenji23" target="_blank" rel="noopener">
+        <span class="ic">⭐</span><span><span class="lbl">GitHub</span><br><span class="val">vbenji23</span></span>
+      </a>
+      <a class="contact-card" href="https://tryhackme.com/p/bvincenti" target="_blank" rel="noopener">
+        <span class="ic">🎯</span><span><span class="lbl">TryHackMe</span><br><span class="val">bvincenti</span></span>
+      </a>
+      <a class="contact-card" href="#" onclick="return false">
+        <span class="ic">📍</span><span><span class="lbl">Localisation</span><br><span class="val">Chatou, France</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Benjamin Vincenti · Portfolio cybersécurité · 2026</div>
+</footer>
+
+</body>
+</html>
